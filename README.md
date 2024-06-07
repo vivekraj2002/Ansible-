@@ -1,3 +1,5 @@
+![image](https://github.com/vivekraj2002/Ansible-/assets/139589508/26759fb1-df8c-4b2c-8f2a-ec7dcd4f30fa)
+
 # Ansible-
 
 [![PyPI version](https://img.shields.io/pypi/v/ansible-core.svg)](https://pypi.org/project/ansible-core)
@@ -7,9 +9,20 @@
 [![Ansible Code of Conduct](https://img.shields.io/badge/code%20of%20conduct-Ansible-silver.svg)](https://docs.ansible.com/ansible/latest/community/code_of_conduct.html)
 [![Ansible mailing lists](https://img.shields.io/badge/mailing%20lists-Ansible-orange.svg)](https://docs.ansible.com/ansible/latest/community/communication.html#mailing-list-information)
 [![Repository License](https://img.shields.io/badge/license-GPL%20v3.0-brightgreen.svg)](COPYING)
-[![Ansible CII Best Practices certification](https://bestpractices.coreinfrastructure.org/projects/2372/badge)](https://bestpractices.coreinfrastructure.org/projects/2372)
+[![Ansible CII Best Practices certification](https://bestpractices.coreinfrastructure.org/projects/2372/badge)](https://bestpractices.coreinfrastructure.org/projects/2372) 
 
-# Ansible
+1. Introduction of ansible
+2. Design Principles
+3. Instalation & Setup & Getting Started
+4. Features of ansible
+5. Components of ansible
+6. Alternative of ansible
+7. Coding Guidelines
+8. Authors
+9. conclusion
+   
+
+# Introduction of ansible
 
 Ansible is a radically simple IT automation system. It handles
 configuration management, application deployment, cloud provisioning,
@@ -31,33 +44,59 @@ changes like zero-downtime rolling updates with load balancers easy. More inform
 * Be usable as non-root.
 * Be the easiest IT automation system to use, ever.
 
-## Use Ansible
+## Instalation & Setup & Getting Started
+
+### Prerequisites
+
+1. Basic knowledge of linux.
+2. A system with a supported OS (Linux, macOS, or Windows).
+
+   
+### Installation 
+ Ubuntu-
+ ```
+sudo apt-get install ansible
+```
+get repositiries of ansible
+```
+sudo apt-add-repository ppa:ansible/ansible
+```
+check version of ansible
+```
+ansible --version
+```
+OUTPUT
+```
+ansible 2.9.6
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/home/vivek/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 3.8.10 (default, Nov 22 2023, 10:22:35) [GCC 9.4.0]
+```
+
+
+
+
 
 You can install a released version of Ansible with `pip` or a package manager. See our
 [installation guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) for details on installing Ansible
 on a variety of platforms.
 
-Power users and developers can run the `devel` branch, which has the latest
-features and fixes, directly. Although it is reasonably stable, you are more likely to encounter
-breaking changes when running the `devel` branch. We recommend getting involved
-in the Ansible community if you want to run the `devel` branch.
 
-## Get Involved
+## Features of ansible
 
-* Read [Community Information](https://docs.ansible.com/ansible/latest/community) for all
-  kinds of ways to contribute to and interact with the project,
-  including mailing list information and how to submit bug reports and
-  code to Ansible.
-* Join a [Working Group](https://docs.ansible.com/ansible/devel/community/communication.html#working-groups),
-  an organized community devoted to a specific technology domain or platform.
-* Submit a proposed code update through a pull request to the `devel` branch.
-* Talk to us before making larger changes
-  to avoid duplicate efforts. This not only helps everyone
-  know what is going on, but it also helps save time and effort if we decide
-  some changes are needed.
-* For a list of email lists, IRC channels and Working Groups, see the
-  [Communication page](https://docs.ansible.com/ansible/devel/community/communication.html)
+* Ansible is an open source, command-line IT automation software application written in Python. It can configure systems, deploy software, and orchestrate advanced workflows to support application deployment, system updates, and more. Ansible's main strengths are simplicity and ease of use.
 
+* Management
+* Security
+* Application deployment
+* Provisioning
+* Ansible
+* Automation mesh
+* Agentless
+* Automation execution environments
+* Inventories
 ## Coding Guidelines
 
 We document our Coding Guidelines in the [Developer Guide](https://docs.ansible.com/ansible/devel/dev_guide/). We particularly suggest you review:
