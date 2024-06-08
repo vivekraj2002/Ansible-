@@ -15,11 +15,14 @@
 2. Design Principles
 3. Instalation & Setup & Getting Started
 4. Features of ansible
-5. Components of ansible
-6. Alternative of ansible
-7. Coding Guidelines
-8. Authors
-9. conclusion
+5. Ansible Workflow
+6. Ansible Playbooks
+7. Ansible Commands
+8. Components of ansible
+9. Alternative of ansible
+10. Coding Guidelines
+11. Authors
+12. conclusion
    
 
 # Introduction of ansible
@@ -97,6 +100,92 @@ on a variety of platforms.
 * Agentless
 * Automation execution environments
 * Inventories
+
+## Ansible Workflow
+
+Ansible works by connecting to your nodes and pushing out a small program called Ansible modules to them. Then Ansible executed these modules and removed them after finished. The library of modules can reside on any machine, and there are no daemons, servers, or databases required.
+
+![image](https://github.com/vivekraj2002/Ansible-/assets/139589508/7ac376f4-de20-426f-98ff-097f2ff5ef37)
+
+In the above image, the Management Node is the controlling node that controls the entire execution of the playbook. The inventory file provides the list of hosts where the Ansible modules need to be run. The Management Node makes an SSH connection and executes the small modules on the host's machine and install the software.
+
+
+## Ansible Playbooks
+
+Playbooks are the files where the Ansible code is written. Playbooks are written in YAML format. YAML means "Yet Another Markup Language," so there is not much syntax needed. Playbooks are one of the core features of Ansible and tell Ansible what to execute, and it is used in complex scenarios. They offer increased flexibility.
+
+Playbooks contain the steps which the user wants to execute on a particular machine. And playbooks are run sequentially. Playbooks are the building blocks for all the use cases of Ansible.
+
+Ansible playbooks tend to be more configuration language than a programming language.
+
+Through a playbook, you can designate specific roles to some of the hosts and other roles to other hosts. By doing this, you can orchestrate multiple servers in very different scenarios, all in one playbook.
+
+### Playbook Structure
+
+Each playbook is a collection of one or more plays. Playbooks are structured by using Plays. There can be more than one play inside a playbook.
+
+![image](https://github.com/vivekraj2002/Ansible-/assets/139589508/56c60157-1bc3-4c60-8c44-b17c085fe6a5)
+
+## Ansible Commands
+
+To install EPEL repo on Centos/RHEL systems.
+```
+sudo yum install epel-release
+``` 
+To install Ansible package on Centos/RHEL systems.
+```
+sudo  yum install -y ansible
+```
+To perform an update to the packages on Debian/Ubuntu systems.
+```
+sudo apt update
+```  
+To install the software properties-common-package on Debian/Ubuntu systems.
+```
+sudo apt install software-properties-common
+``` 
+To install Ansible personal package archive on Debian/Ubuntu systems.
+```
+sudo apt-add-repository ppa:ansible/ansible
+```  
+To install Ansible on Debian/Ubuntu systems.
+```
+sudo apt update
+sudo apt install ansible
+```  
+To issue a ping command on all servers defined in the inventory file named hosts.
+```
+ansible -i hosts all -m ping
+```
+To issue a ping command only on hosts2.
+```
+ansible -i hosts all -m ping --limit host2
+```  
+To copy the file "testfile" on all hosts in the inventory file.
+```
+ansible -i hosts all -m copy -a "src=/root/test_ansible/testfile dest=/tmp/testfile"
+```
+To install ncdu package on all hosts.
+```
+ansible -i hosts all -m yum -a 'name=ncdu state=present'
+```  
+To remove ncdu package on all hosts.
+```
+ansible -i hosts all -m yum -a 'name=ncdu state=absent'
+```
+To build the directory structure for the role named role1.
+```
+ansible-galaxy init role1
+```  
+To dry-run p4.yml playbook.
+```
+ansible-playbook -i hosts p4.yml --check
+```
+To run a p4.yml playbook with password authentication for all hosts.
+```
+ansible-playbook -i hosts p4.yml -k
+```
+
 ## Coding Guidelines
 
 We document our Coding Guidelines in the [Developer Guide](https://docs.ansible.com/ansible/devel/dev_guide/). We particularly suggest you review:
