@@ -185,20 +185,63 @@ To run a p4.yml playbook with password authentication for all hosts.
 ```
 ansible-playbook -i hosts p4.yml -k
 ```
+## Inventory of Ansible
 
-## Coding Guidelines
+Ansible works against multiple managed hosts in your infrastructure at the same time, using a list or group of lists is known as the inventory.
 
-We document our Coding Guidelines in the [Developer Guide](https://docs.ansible.com/ansible/devel/dev_guide/). We particularly suggest you review:
+Once an inventory is defined, you use patterns to select the hosts or groups you want to run against to Ansible.
 
-* [Contributing your module to Ansible](https://docs.ansible.com/ansible/devel/dev_guide/developing_modules_checklist.html)
-* [Conventions, tips, and pitfalls](https://docs.ansible.com/ansible/devel/dev_guide/developing_modules_best_practices.html)
+The default location for inventory is a file called /etc/ansible/hosts. You can also specify a different inventory file at the command line using the -i <path> option. You can pull the inventory file from dynamic or cloud sources or different formats (YAML, ini). Ansible has inventory plugins to make it flexible and customize.
 
-## Branch Info
+### Hosts and group
 
-* The `devel` branch corresponds to the release actively under development.
-* The `stable-2.X` branches correspond to stable releases.
-* Create a branch based on `devel` and set up a [dev environment](https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_general.html#common-environment-setup) if you want to open a PR.
-* See the [Ansible release and maintenance](https://docs.ansible.com/ansible/devel/reference_appendices/release_and_maintenance.html) page for information about active branches.
+The format is /etc/ansible/ hosts are in INI like format, such as:
+
+```
+mail.example.com  
+  
+[webservers]  
+foo.example.com  
+bar.example.com  
+  
+[dbservers]  
+one.example.com  
+two.example.com 
+three.example.com
+```
+Heading in the brackets is a group name, which is used in classifying the systems. And deciding what policy you are controlling at what time and for what purpose. You can put the systems in more than one group.
+
+For example, a server could be both a dbserver and a webserver.
+
+If you have hosts that run on a non-standard SSH port, then you can put the port number after the hostname with the colon. The Ports listed in the SSH configuration file that can be used with the OpenSSH connection but not use with the paramiko connection.
+
+To makes things explicit, it is suggested that you set them if items are not running on the default ports:
+```
+badwolf.example.com:5309
+```
+Suppose you have static IPs and want to set up some aliases that live in your host file, or you can connect through tunnels. Also, you can describe the hosts like the below example:
+```
+Jumper ansible_port=5555 ansible_host=192.0.2.50
+```
+![image](https://github.com/vivekraj2002/Ansible-/assets/139589508/6f79b855-1cc9-41db-9928-46aca8c4cec6)
+
+#### Inventory basics formats 
+
+We can create our inventory file in one of many formats, depending on the inventory plugins we have. The most common formats are INI and YAML. A basic INI /etc/ansible/hosts look like this :
+```
+mail.example.com
+
+[webservers]
+foo.example.com
+bar.example.com
+
+[dbservers]
+one.example.com
+two.example.com
+three.example.com
+```
+Check here for build inventory [How to build inventory](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html)
+
 
 ## Roadmap
 
