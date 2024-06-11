@@ -13,7 +13,7 @@
 
 1. [Introduction of ansible](#Introduction-of-ansible)
 2. [Design Principles](#Design-Principles)
-3. [Installation Setup & Getting Started](#Installation-Setup-&-Getting-Started)
+3. [Installation Setup and Getting Started](#Installation-Setup-and-Getting-Started)
 4. [Features of ansible](#Features-of-ansible)
 5. [Ansible Workflow](#Ansible-Workflow)
 6. [Ansible Playbooks](#Ansible-Playbooks)
@@ -47,7 +47,7 @@ changes like zero-downtime rolling updates with load balancers easy. More inform
 * Be usable as non-root.
 * Be the easiest IT automation system to use, ever.
 
-## Installation Setup & Getting Started
+## Installation Setup and Getting Started
 
 ### Prerequisites
 
