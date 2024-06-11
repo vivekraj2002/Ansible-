@@ -11,18 +11,18 @@
 [![Repository License](https://img.shields.io/badge/license-GPL%20v3.0-brightgreen.svg)](COPYING)
 [![Ansible CII Best Practices certification](https://bestpractices.coreinfrastructure.org/projects/2372/badge)](https://bestpractices.coreinfrastructure.org/projects/2372) 
 
-1. Introduction of ansible
-2. Design Principles
-3. Instalation & Setup & Getting Started
+1. [Introduction of ansible](#Introduction-of-ansible)
+2. [Design Principles](#Design-Principles)
+3. [Installation & Setup & Getting Started](#Installation-&-Setup-&-Getting-Started)
 4. [Features of ansible](#Features-of-ansible)
-5. Ansible Workflow
-6. Ansible Playbooks
-7. Ansible Commands
-8. Components of ansible
-9. Alternative of ansible
-10. Coding Guidelines
-11. Authors
-12. conclusion
+5. [Ansible Workflow](#Ansible-Workflow)
+6. [Ansible Playbooks](#Ansible-playbook)
+7. [Ansible Commands](#Ansible-commands)
+8. [Inventory of Ansible](#Inventory-of-Ansible)
+9. [Working of Ansible](#Working-of-Ansible)
+10. [Ansible Tower](#Ansible-Tower)
+11. [Authors](#Authors)
+12. [conclusion](#conclusion)
    
 
 # Introduction of ansible
