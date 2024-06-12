@@ -288,3 +288,5 @@ and has contributions from over 5000 users (and growing). Thanks everyone!
 ## conclusion
 
 Ansible is a powerful open-source automation tool that simplifies the process of managing and orchestrating IT infrastructure, configuration management, application deployment, and various other tasks.
+
+## THANKS.
