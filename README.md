@@ -242,11 +242,41 @@ three.example.com
 ```
 Check here for build inventory [How to build inventory](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html)
 
+## Working of Ansible
 
-## Roadmap
+Ansible interacts with your networks and sends little programs, known as modules, to them. These modules are utilized to complete automated tasks as systems designed to be resource models for the functioning at the desired state. Ansible runs these modules and eliminates them after they’re done. If modules weren’t available, you would have to depend on ad-hoc procedures and scripting to complete tasks. Ansible’s management node is the primary node overseeing the Playbook’s implementation.
 
-Based on team and community feedback, an initial roadmap will be published for a major or minor version (ex: 2.7, 2.8).
-The [Ansible Roadmap page](https://docs.ansible.com/ansible/devel/roadmap/) details what is planned and how to influence the roadmap.
+![image](https://github.com/vivekraj2002/Ansible-/assets/139589508/f74aa2c3-ab0c-49b1-a285-9bb901ca9f34)
+
+he management node sets up an SSH connection before executing the modules and installing the product on the host workstations. Once the modules have been deployed, it eliminates them. So that’s how it works with Ansible. Python is used to create an Ansible script and connects remote hosts through SSH, specified in the inventory file. Ansible is agentless – implying that it doesn’t need any program to be installed on the nodes it controls.
+
+## Ansible Tower
+
+Ansible Tower employs a web-based user interface that makes it even more intuitive for IT team members of all system administration experience levels. When thinking of Ansible vs Ansible Tower, it’s helpful to consider Ansible Tower’s capabilities as an extension of those available in Ansible. 
+
+### Its features include:
+
+* Graphical user interface (GUI) dashboard
+* Role-based access control 
+* Job scheduling
+* Multi-playbook workflows
+* RESTful API
+* External logging integrations
+* Real-time job status updates
+
+### Ansible Tower Architecture
+
+There are three possible architectures available for Ansible Tower: single machine with integrated database, single machine with remote database, and high-availability multi-machine cluster. No matter which of the three you use, the primary architecture uses the same building blocks.
+
+![image](https://github.com/vivekraj2002/Ansible-/assets/139589508/30e91854-64b8-404e-8832-71ef8963a6e0)
+
+
+Users interface with the platform via the graphical web interface or its RESTful API.
+Ansible Tower requires at least one host and one node.
+Playbooks are prewritten YAML code that acts as the blueprint of automation tasks. They are lists of tasks that automatically execute against hosts.
+Using Tower, a set, group, or classification of hosts runs playbooks.
+Ansible Tower is agent-less, meaning it works by uploading modules to the node then executing them–no “agent” or need to install special software.
+
 
 ## Authors
 
@@ -255,8 +285,6 @@ and has contributions from over 5000 users (and growing). Thanks everyone!
 
 [Ansible](https://www.ansible.com) is sponsored by [Red Hat, Inc.](https://www.redhat.com)
 
-## License
+## conclusion
 
-GNU General Public License v3.0 or later
-
-See [COPYING](COPYING) to see the full text.
+Ansible is a powerful open-source automation tool that simplifies the process of managing and orchestrating IT infrastructure, configuration management, application deployment, and various other tasks.
