@@ -2,14 +2,6 @@
 
 # Ansible-
 
-[![PyPI version](https://img.shields.io/pypi/v/ansible-core.svg)](https://pypi.org/project/ansible-core)
-[![Docs badge](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://docs.ansible.com/ansible/latest/)
-[![Chat badge](https://img.shields.io/badge/chat-IRC-brightgreen.svg)](https://docs.ansible.com/ansible/latest/community/communication.html)
-[![Build Status](https://dev.azure.com/ansible/ansible/_apis/build/status/CI?branchName=devel)](https://dev.azure.com/ansible/ansible/_build/latest?definitionId=20&branchName=devel)
-[![Ansible Code of Conduct](https://img.shields.io/badge/code%20of%20conduct-Ansible-silver.svg)](https://docs.ansible.com/ansible/latest/community/code_of_conduct.html)
-[![Ansible mailing lists](https://img.shields.io/badge/mailing%20lists-Ansible-orange.svg)](https://docs.ansible.com/ansible/latest/community/communication.html#mailing-list-information)
-[![Repository License](https://img.shields.io/badge/license-GPL%20v3.0-brightgreen.svg)](COPYING)
-[![Ansible CII Best Practices certification](https://bestpractices.coreinfrastructure.org/projects/2372/badge)](https://bestpractices.coreinfrastructure.org/projects/2372) 
 
 1. [Introduction of ansible](#Introduction-of-ansible)
 2. [Design Principles](#Design-Principles)
@@ -103,7 +95,7 @@ on a variety of platforms.
 
 ## Ansible Workflow
 
-Ansible works by connecting to your nodes and pushing out a small program called Ansible modules to them. Then Ansible executed these modules and removed them after finished. The library of modules can reside on any machine, and there are no daemons, servers, or databases required.
+Ansible works by connecting to our nodes and pushing out a small program called Ansible modules to them. Then Ansible executed these modules and removed them after finished. The library of modules can reside on any machine, and there are no daemons, servers, or databases required.
 
 ![image](https://github.com/vivekraj2002/Ansible-/assets/139589508/7ac376f4-de20-426f-98ff-097f2ff5ef37)
 
@@ -118,11 +110,25 @@ Playbooks contain the steps which the user wants to execute on a particular mach
 
 Ansible playbooks tend to be more configuration language than a programming language.
 
-Through a playbook, you can designate specific roles to some of the hosts and other roles to other hosts. By doing this, you can orchestrate multiple servers in very different scenarios, all in one playbook.
+Through a playbook, We can designate specific roles to some of the hosts and other roles to other hosts. By doing this, you can orchestrate multiple servers in very different scenarios, all in one playbook.
 
 ### Playbook Structure
 
 Each playbook is a collection of one or more plays. Playbooks are structured by using Plays. There can be more than one play inside a playbook.
+
+```
+name: sample book
+  - hosts: localhost
+  tasks:
+    - name: Update all packages to the latest version
+      yum:
+        name: '*'
+        state: latest
+    - name: run httpd
+      service:
+        name: httpd
+        state: started
+```
 
 ![image](https://github.com/vivekraj2002/Ansible-/assets/139589508/56c60157-1bc3-4c60-8c44-b17c085fe6a5)
 
@@ -189,9 +195,9 @@ ansible-playbook -i hosts p4.yml -k
 
 Ansible works against multiple managed hosts in your infrastructure at the same time, using a list or group of lists is known as the inventory.
 
-Once an inventory is defined, you use patterns to select the hosts or groups you want to run against to Ansible.
+Once an inventory is defined, We use patterns to select the hosts or groups We want to run against to Ansible.
 
-The default location for inventory is a file called /etc/ansible/hosts. You can also specify a different inventory file at the command line using the -i <path> option. You can pull the inventory file from dynamic or cloud sources or different formats (YAML, ini). Ansible has inventory plugins to make it flexible and customize.
+The default location for inventory is a file called /etc/ansible/hosts. We can also specify a different inventory file at the command line using the -i <path> option. We can pull the inventory file from dynamic or cloud sources or different formats (YAML, ini). Ansible has inventory plugins to make it flexible and customize.
 
 ### Hosts and group
 
@@ -209,20 +215,69 @@ one.example.com
 two.example.com 
 three.example.com
 ```
-Heading in the brackets is a group name, which is used in classifying the systems. And deciding what policy you are controlling at what time and for what purpose. You can put the systems in more than one group.
+Heading in the brackets is a group name, which is used in classifying the systems. And deciding what policy we are controlling at what time and for what purpose. We can put the systems in more than one group.
 
 For example, a server could be both a dbserver and a webserver.
 
-If you have hosts that run on a non-standard SSH port, then you can put the port number after the hostname with the colon. The Ports listed in the SSH configuration file that can be used with the OpenSSH connection but not use with the paramiko connection.
+If We have hosts that run on a non-standard SSH port, then We can put the port number after the hostname with the colon. The Ports listed in the SSH configuration file that can be used with the OpenSSH connection but not use with the paramiko connection.
 
-To makes things explicit, it is suggested that you set them if items are not running on the default ports:
+To makes things explicit, it is suggested that We set them if items are not running on the default ports:
 ```
 badwolf.example.com:5309
 ```
-Suppose you have static IPs and want to set up some aliases that live in your host file, or you can connect through tunnels. Also, you can describe the hosts like the below example:
+Suppose We have static IPs and want to set up some aliases that live in your host file, or we can connect through tunnels. Also, We can describe the hosts like the below example:
 ```
 Jumper ansible_port=5555 ansible_host=192.0.2.50
 ```
+## We run a command for check ansible host file :-
+
+```
+gedit /etc/ansible/hosts
+```
+
+## This is the default ansible 'hosts' file.
+
+## It should live in /etc/ansible/hosts
+   - Comments begin with the '#' character
+  - Blank lines are ignored
+  - Groups of hosts are delimited by [header] elements
+  - You can enter hostnames or ip addresses
+   - A hostname/ip can be a member of multiple groups
+
+### Ex 1: Ungrouped hosts, specify before any group headers.
+
+#green.example.com
+#blue.example.com
+#192.168.100.1
+#192.168.100.10
+
+### Ex 2: A collection of hosts belonging to the 'webservers' group
+
+#[webservers]
+#alpha.example.org
+#beta.example.org
+#192.168.1.100
+#192.168.1.110
+
+### If you have multiple hosts following a pattern you can specify
+ them like this:
+
+#www[001:006].example.com
+
+### Ex 3: A collection of database servers in the 'dbservers' group
+
+#[dbservers]
+#
+#db01.intranet.mydomain.net
+#db02.intranet.mydomain.net
+#10.25.1.56
+#10.25.1.57
+
+## Here's another example of host ranges, this time there are no
+ leading 0s:
+
+#db-[99:101]-node.example.com
+
 ![image](https://github.com/vivekraj2002/Ansible-/assets/139589508/6f79b855-1cc9-41db-9928-46aca8c4cec6)
 
 #### Inventory basics formats 
@@ -244,11 +299,11 @@ Check here for build inventory [How to build inventory](https://docs.ansible.com
 
 ## Working of Ansible
 
-Ansible interacts with your networks and sends little programs, known as modules, to them. These modules are utilized to complete automated tasks as systems designed to be resource models for the functioning at the desired state. Ansible runs these modules and eliminates them after they’re done. If modules weren’t available, you would have to depend on ad-hoc procedures and scripting to complete tasks. Ansible’s management node is the primary node overseeing the Playbook’s implementation.
+Ansible interacts with our networks and sends little programs, known as modules, to them. These modules are utilized to complete automated tasks as systems designed to be resource models for the functioning at the desired state. Ansible runs these modules and eliminates them after they’re done. If modules weren’t available, We would have to depend on ad-hoc procedures and scripting to complete tasks. Ansible’s management node is the primary node overseeing the Playbook’s implementation.
 
 ![image](https://github.com/vivekraj2002/Ansible-/assets/139589508/f74aa2c3-ab0c-49b1-a285-9bb901ca9f34)
 
-he management node sets up an SSH connection before executing the modules and installing the product on the host workstations. Once the modules have been deployed, it eliminates them. So that’s how it works with Ansible. Python is used to create an Ansible script and connects remote hosts through SSH, specified in the inventory file. Ansible is agentless – implying that it doesn’t need any program to be installed on the nodes it controls.
+he manage node sets up an SSH connection before executing the modules and installing the product on the host workstations. Once the modules have been deployed, it eliminates them. So that’s how it works with Ansible. Python is used to create an Ansible script and connects remote hosts through SSH, specified in the inventory file. Ansible is agentless – implying that it doesn’t need any program to be installed on the nodes it controls.
 
 ## Ansible Tower
 
