@@ -13,31 +13,20 @@
 8. [Inventory of Ansible](#Inventory-of-Ansible)
 9. [Working of Ansible](#Working-of-Ansible)
 10. [Ansible Tower](#Ansible-Tower)
-11. [Authors](#Authors)
-12. [conclusion](#conclusion)
+11. [conclusion](#conclusion)
    
 
 # Introduction of ansible
 
-Ansible is a radically simple IT automation system. It handles
-configuration management, application deployment, cloud provisioning,
-ad-hoc task execution, network automation, and multi-node orchestration. Ansible makes complex
-changes like zero-downtime rolling updates with load balancers easy. More information on the Ansible [website](https://ansible.com/).
+Ansible is an open-source IT automation tool that simplifies and automates various manual IT processes, including provisioning, configuration management, application deployment, and orchestration. It is designed to be minimal, consistent, secure, and highly reliable, with an extremely low learning curve for administrators, developers, and IT managers.
 
 ## Design Principles
 
-* Have an extremely simple setup process with a minimal learning curve.
-* Manage machines quickly and in parallel.
-* Avoid custom-agents and additional open ports, be agentless by
-  leveraging the existing SSH daemon.
-* Describe infrastructure in a language that is both machine and human
-  friendly.
-* Focus on security and easy auditability/review/rewriting of content.
-* Manage new remote machines instantly, without bootstrapping any
-  software.
-* Allow module development in any dynamic language, not just Python.
-* Be usable as non-root.
-* Be the easiest IT automation system to use, ever.
+* **Agentless architecture**: Ansible uses an agentless architecture, which means it does not require any software or agents to be installed on the managed nodes. This reduces maintenance overhead by avoiding the installation of additional software across IT infrastructure.
+
+* **Simplicity**: Ansible is designed to be simple, powerful, and easy to learn and use. It uses straightforward YAML syntax for code that reads like documentation.
+
+* **Modularity**: Ansible uses modules to break down complex tasks into smaller, more manageable pieces.
 
 ## Installation Setup and Getting Started
 
@@ -332,13 +321,6 @@ Playbooks are prewritten YAML code that acts as the blueprint of automation task
 Using Tower, a set, group, or classification of hosts runs playbooks.
 Ansible Tower is agent-less, meaning it works by uploading modules to the node then executing them–no “agent” or need to install special software.
 
-
-## Authors
-
-Ansible was created by [Michael DeHaan](https://github.com/mpdehaan)
-and has contributions from over 5000 users (and growing). Thanks everyone!
-
-[Ansible](https://www.ansible.com) is sponsored by [Red Hat, Inc.](https://www.redhat.com)
 
 ## conclusion
 
